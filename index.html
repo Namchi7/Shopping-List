@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="./images/CartIcon.svg" type="image/x-icon">
+    <title>Shopping List</title>
+    <script type="module" src="index.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <header class="heading">
+            <div class="heading-left">
+                <h1>Shopping List</h1>
+                <img src="./images/ShoppingCart.svg" alt="Shopping Icon" class="shopping-icon">
+            </div>
+            <div class="delete-all" id="delete-all">Delete All Lists</div>
+        </header>
+        <main class="main-body">
+            <div class="add-list">
+                <input type="text" class="list-name" id="list-name" placeholder="Enter list name...">
+                <input type="submit" value="Add" class="add-btn" id="add-btn">
+            </div>
+            <hr>
+            <div class="shopping-lists" id="shopping-lists">
+                <!-- <div class="list">
+                    <div class="shopping-list-name">
+                        <span class="list-title">Grocery</span>
+                        <img src="./images/Edit.svg" alt="" class="edit">
+                        <img src="./images/Delete.svg" alt="" class="delete">
+                        <img src="./images/Expand.svg" alt="Expand/Shrink" class="list-view">
+                    </div>
+                    <hr>
+                    <div class="list-item-headers">
+                        <span class="item-h">Item Name</span>
+                        <span class="qty-h">Quantity</span>
+                        <span class="action-h">Action</span>
+                    </div>
+                    <div class="list-items">
+                        <div class="list-item">
+                            <span class="item-name">Item 1</span>
+                            <span class="qty">5kg</span>
+                            <div class="action">
+                                <img src="./images/Edit.svg" alt="" class="edit">
+                                <img src="./images/Delete.svg" alt="" class="delete">  
+                            </div>
+                        </div>   
+                        <div class="add-list-item">
+                            <input type="text" class="item-name" placeholder="Enter item name...">
+                            <input type="text" class="qty" placeholder="Qty?...">
+                            <input type="submit" value="Add" class="add-btn" id="item-add-btn">                        
+                        </div>                     
+                    </div>
+                    <div class="add-list-item">
+                        <input type="text" class="item-name" placeholder="Enter item name...">
+                        <input type="text" class="qty" placeholder="Qty?...">
+                        <input type="submit" value="Add" class="add-btn" id="item-add-btn">                        
+                    </div>
+                </div> -->
+            </div>
+        </main>
+    </div>
+</body>
+</html>

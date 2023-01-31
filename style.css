@@ -1,0 +1,263 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: whitesmoke;
+    width: 100vw;
+    height: max-content;
+    min-height: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* text-align: center; */
+}
+
+input {
+    border: none;
+    outline: none;
+    padding: 0 3px;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    /* max-width: 950px; */
+    height: fit-content;
+    min-height: 100vh;
+    background-color: #D2FFFA;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(231, 219, 219);
+    box-shadow: 10px 0 10px rgba(0, 0, 0, 0.25);
+    padding: 10px 20px;
+    z-index: 10;
+}
+
+.heading-left {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: left;
+}
+
+.shopping-icon {
+    height: 2rem;
+}
+
+.delete-all:hover {
+    cursor: pointer;
+    color: red;
+}
+
+hr {
+    opacity: 0.8;
+    color: whitesmoke;
+}
+
+main {
+    position: relative;
+    margin-top: 100px;
+    width: 95%;
+    max-width: 950px;
+    height: 90%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 30px;
+    padding-bottom: 50px;
+}
+
+main > * {
+    width: 100%;
+    max-width: 600px;
+    filter: drop-shadow(0 0 7px rgba(0, 0, 0, 0.25));
+}
+
+main > hr {
+    width: 90%;
+    opacity: 0.6;
+    color: black;
+}
+
+.add-list {
+    display: grid;
+    grid-template-columns: 85% 1fr;
+    gap: 5px;
+    align-items: center;
+    height: 35px;
+    background-color: white;
+    padding: 2.5px 7px;
+    border-radius: 5px;
+}
+
+.list-name {
+    font-size: 0.85rem;    
+}
+
+.add-btn {
+    background-color: rgb(216, 216, 216);
+    border-radius: 5px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    height: 25px;
+}
+
+.add-btn:hover {
+    cursor: pointer;
+    color: white;
+    background-color: green;
+}
+
+.shopping-lists {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 15px;
+    flex-grow: 1;
+    flex-shrink: 0;
+}
+
+.list {
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 10px;
+    min-height: max-content
+}
+
+.shopping-list-name {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 82.5% 1fr 1fr 1fr;
+    gap: 5px;
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.edit , .delete , .list-view {
+    height: 22px;
+}
+
+.delete {
+    margin-left: 2px;
+}
+
+.edit , .delete , .list-view:hover {
+    cursor: pointer;
+}
+
+.list-item-headers {
+    display: grid;
+    grid-template-columns: 75% 12% 1fr;
+    gap: 5px;
+    padding: 5px;
+}
+
+.qty-h, .action-h {
+    text-align: center;
+}
+
+.list-items {
+    width: 100%;
+}
+
+.list-item {
+    display: grid;
+    grid-template-columns: 75% 12% 1fr;
+    gap: 5px;
+    padding: 5px;
+    /* background-color: whitesmoke; */
+}
+
+.add-list-item {
+    display: grid;
+    grid-template-columns: 75% 12% 1fr;
+    gap: 5px;
+    margin-top: 7px;
+    padding: 5px;
+    background-color: whitesmoke;
+    border-radius: 5px;
+}
+
+.qty {
+    text-align: center;
+}
+
+.action {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 2px;
+}
+
+.action > * {
+    height: 1.1rem;
+}
+
+.item-save-btn {
+    background-color: rgb(216, 216, 216);
+    border-radius: 5px;
+    padding: 0.03rem 0.4rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    height: 1.3rem;
+    width: 3rem;
+}
+
+.item-save-btn:hover {
+    cursor: pointer;
+    color: white;
+    background-color: green;
+}
+
+@media screen and (max-width: 510px) {
+    .shopping-list-name {
+        grid-template-columns: 70% 1fr 1fr 1fr;
+    }
+
+    .list-item-headers {
+        grid-template-columns: 65% 20% 1fr;
+    }
+
+    .list-item {
+        grid-template-columns: 65% 20% 1fr;
+    }
+
+    .add-list-item {
+        grid-template-columns: 65% 20% 1fr;
+    }
+
+    .item-save-btn {
+        width: 2.5rem;
+    }
+}

@@ -180,6 +180,38 @@ function renderItems(items) {
   return listOfItems;
 }
 
+function toggleView() {
+  const listView = document.querySelectorAll("#list-view");
+  console.log(listView);
+
+  listView.forEach((view) => {
+    view.addEventListener("click", () => {
+      const allChild = view.parentElement.parentElement.children;
+
+      if (view.getAttribute("alt") === "Shrink") {
+        for (let i = 1; i < allChild.length; i++) {
+          allChild[i].style.display = "none";
+        }
+
+        view.setAttribute("alt", "Expand");
+
+        view.setAttribute("src", "./images/Expand.svg");
+      } else if (view.getAttribute("alt") === "Expand") {
+        allChild[1].style.display = "flex";
+
+        for (let i = 2; i < allChild.length; i++) {
+          allChild[i].style.display = "grid";
+        }
+
+        view.setAttribute("alt", "Shrink");
+
+        view.setAttribute("src", "./images/Shrink.svg");
+      }
+      console.log(view.parentElement.parentElement.children);
+    });
+  });
+}
+
 function showAllLists() {
   const lists = JSON.parse(localStorage.getItem("Shopping Lists")) || [];
 
@@ -193,7 +225,7 @@ function showAllLists() {
                                     <span class="list-title">${list.listName}</span>
                                     <img src="./images/Edit.svg" alt="" class="edit" id="edit-list">
                                     <img src="./images/Delete.svg" alt="" class="delete" id="delete-list">
-                                    <img src="./images/Expand.svg" alt="Expand/Shrink" class="list-view">
+                                    <img src="./images/Shrink.svg" alt="Shrink" class="list-view" id="list-view">
                                 </div>
                                 <hr>
                                 <div class="list-item-headers">
@@ -220,6 +252,7 @@ function showAllLists() {
     editListName(lists);
     removeItem(lists);
     removeList(lists);
+    toggleView();
   } else {
     allListGoHere.innerHTML = `<p style="text-align: center;">No Lists Present</p>`;
   }
@@ -255,7 +288,7 @@ function addItemInList() {
   });
 }
 
-listAddBtn.addEventListener("click", () => {
+function addNewList() {
   if (checkWhiteSpaceString(newListName.value) === false) {
     const lists = JSON.parse(localStorage.getItem("Shopping Lists")) || {
       allLists: [],
@@ -272,6 +305,16 @@ listAddBtn.addEventListener("click", () => {
     showAllLists();
 
     newListName.value = "";
+  }
+}
+
+listAddBtn.addEventListener("click", () => {
+  addNewList();
+});
+
+newListName.addEventListener("keydown", (k) => {
+  if (k.key === "Enter") {
+    addNewList();
   }
 });
 

@@ -7,6 +7,7 @@ const allList = {
   allLists: [
     {
       listName: "List Name",
+      expand: "true",
       items: [
         {
           item: "Item 1",
@@ -20,6 +21,7 @@ const allList = {
     },
     {
       listName: "List Name",
+      expand: "true",
       items: [
         {
           item: "Item 1",
@@ -36,6 +38,7 @@ const allList = {
 
 const listObj = {
   listName: "List Name",
+  expand: true,
   items: [
     {
       item: "Item 1",
@@ -180,13 +183,14 @@ function renderItems(items) {
   return listOfItems;
 }
 
-function toggleView() {
+function toggleView(lists) {
   const listView = document.querySelectorAll("#list-view");
   console.log(listView);
 
   listView.forEach((view) => {
     view.addEventListener("click", () => {
       const allChild = view.parentElement.parentElement.children;
+      const ind = parseInt(view.parentElement.parentElement.id);
 
       if (view.getAttribute("alt") === "Shrink") {
         for (let i = 1; i < allChild.length; i++) {
@@ -207,7 +211,9 @@ function toggleView() {
 
         view.setAttribute("src", "./images/Shrink.svg");
       }
-      console.log(view.parentElement.parentElement.children);
+
+      lists.allLists[ind].expand = !lists.allLists[ind].expand;
+      saveLists(lists);
     });
   });
 }
@@ -219,21 +225,24 @@ function showAllLists() {
 
   if (lists.allLists.length !== 0) {
     lists.allLists.forEach((list, index) => {
+      const hrDisplayProp = list.expand ? "block" : "none";
+      const displayProp = list.expand ? "grid" : "none";
+      const viewImage = list.expand ? "Shrink" : "Expand";
       const listTemplate =
         `  <div class="list" id="${index}">
                                 <div class="shopping-list-name">
                                     <span class="list-title">${list.listName}</span>
                                     <img src="./images/Edit.svg" alt="" class="edit" id="edit-list">
                                     <img src="./images/Delete.svg" alt="" class="delete" id="delete-list">
-                                    <img src="./images/Shrink.svg" alt="Shrink" class="list-view" id="list-view">
+                                    <img src="./images/${viewImage}.svg" alt="${viewImage}" class="list-view" id="list-view">
                                 </div>
-                                <hr>
-                                <div class="list-item-headers">
+                                <hr style="display:${hrDisplayProp};">
+                                <div style="display:${displayProp};"  class="list-item-headers">
                                     <span class="item-h">Item Name</span>
                                     <span class="qty-h">Quantity</span>
                                     <span class="action-h">Action</span>
                                 </div>
-                                <div class="list-items">` +
+                                <div style="display:${displayProp};" class="list-items">` +
         renderItems(list.items) +
         `     
                                     <div class="add-list-item">
@@ -252,7 +261,7 @@ function showAllLists() {
     editListName(lists);
     removeItem(lists);
     removeList(lists);
-    toggleView();
+    toggleView(lists);
   } else {
     allListGoHere.innerHTML = `<p style="text-align: center;">No Lists Present</p>`;
   }
